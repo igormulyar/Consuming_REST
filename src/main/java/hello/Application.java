@@ -5,8 +5,11 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Application {
@@ -24,14 +27,34 @@ public class Application {
                 .asJson();
 
         String requestString = jsonResponse.getBody().toString();
-        JSONArray array = jsonResponse.getBody().getArray();
-        JsonNode node = new JsonNode(array.get(0).toString());
+        JSONArray jsonArray = jsonResponse.getBody().getArray();
+        JsonNode node = new JsonNode(jsonArray.get(0).toString());
 
-        System.out.println(array.get(0).toString());
+        List<CourtCase> caseList = new ArrayList<>();
+
+        for (int i = 0; i < jsonArray.length(); i++){
+            caseList.add(parseCourtCaseFromJson(new JsonNode(jsonArray.get(i).toString()).getObject()));
+
+        }
+
+        System.out.println(caseList.get(7).toString());
+        //System.out.println(jsonArray.get(0).toString());
 
         //writeToFile(requestString);
 
 
+    }
+
+    private static CourtCase parseCourtCaseFromJson(JSONObject jsonCase) {
+        return new CourtCase(
+                jsonCase.getString("date"),
+                jsonCase.getString("number"),
+                jsonCase.getString("involved"),
+                jsonCase.getString("description"),
+                jsonCase.getString("judge"),
+                jsonCase.getString("forma"),
+                jsonCase.getString("add_address")
+                );
     }
 
 
