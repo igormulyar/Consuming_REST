@@ -60,12 +60,12 @@ public class CourtCase {
     public String toString() {
         return "CourtCase{" + "\n" +
                 "date=" + date + "\n" +
-                ", number=" + number + "\n" +
-                ", involved=" + involved + "\n" +
-                ", description=" + description + "\n" +
-                ", judge=" + judge + "\n" +
-                ", forma=" + forma + "\n" +
-                ", add_address=" + add_address + "\n" +
+                "number=" + number + "\n" +
+                "involved=" + involved + "\n" +
+                "description=" + description + "\n" +
+                "judge=" + judge + "\n" +
+                "forma=" + forma + "\n" +
+                "add_address=" + add_address + "\n" +
                 '}';
     }
 }
