@@ -5,7 +5,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -26,10 +32,14 @@ public class Main {
         String body = "q_court_id=1522";
 
         HttpEntity<String> httpEntity = new HttpEntity<>(body, headers);
+        List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
+        messageConverters.add(new MappingJackson2HttpMessageConverter());
+        restTemplate.setMessageConverters(messageConverters);
 
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
+        List<CourtCase> list = Arrays.asList(restTemplate.postForObject(url, httpEntity, CourtCase[].class));
+        //ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
 
-        System.out.println(response.toString());
+        System.out.println(list.toString());
     }
 
 }
