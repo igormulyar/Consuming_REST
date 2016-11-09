@@ -7,6 +7,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -27,9 +30,11 @@ public class Main {
 
         HttpEntity<String> httpEntity = new HttpEntity<>(body, headers);
 
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
 
-        System.out.println(response.toString());
+        List<CourtCase> list = Arrays.asList(restTemplate.postForObject(url, httpEntity, CourtCase[].class));
+        //ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);
+
+        System.out.println(list.toString());
     }
 
 }
