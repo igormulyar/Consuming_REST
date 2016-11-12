@@ -1,6 +1,7 @@
 package hello;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by igor on 21.09.16.
@@ -9,22 +10,34 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CourtCase {
 
+    @JsonProperty("date")
     private String date;
-    private String number;
-    private String involved;
-    private String description;
+
+    @JsonProperty("judge")
     private String judge;
+
+    @JsonProperty("forma")
     private String forma;
+
+    @JsonProperty("number")
+    private String number;
+
+    @JsonProperty("involved")
+    private String involved;
+
+    @JsonProperty("description")
+    private String description;
+
+    @JsonProperty("add_address")
     private String add_address;
 
-
-    public CourtCase(String date, String number, String involved, String description, String judge, String forma, String add_address) {
+    public CourtCase(String date, String judge, String forma, String number, String involved, String description, String add_address) {
         this.date = date;
+        this.judge = judge;
+        this.forma = forma;
         this.number = number;
         this.involved = involved;
         this.description = description;
-        this.judge = judge;
-        this.forma = forma;
         this.add_address = add_address;
     }
 
@@ -32,86 +45,56 @@ public class CourtCase {
         return date;
     }
 
-    public String getJudge() {
-        return judge;
-    }
-
-    public String getForma() {
-        return forma;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public String getInvolved() {
-        return involved;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getAdd_address() {
-        return add_address;
-    }
-
     public void setDate(String date) {
         this.date = date;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public void setInvolved(String involved) {
-        this.involved = involved;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public String getJudge() {
+        return judge;
     }
 
     public void setJudge(String judge) {
         this.judge = judge;
     }
 
+    public String getForma() {
+        return forma;
+    }
+
     public void setForma(String forma) {
         this.forma = forma;
     }
 
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getInvolved() {
+        return involved;
+    }
+
+    public void setInvolved(String involved) {
+        this.involved = involved;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAdd_address() {
+        return add_address;
+    }
+
     public void setAdd_address(String add_address) {
         this.add_address = add_address;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        CourtCase courtCase = (CourtCase) o;
-
-        if (!add_address.equals(courtCase.add_address)) return false;
-        if (!date.equals(courtCase.date)) return false;
-        if (!description.equals(courtCase.description)) return false;
-        if (!forma.equals(courtCase.forma)) return false;
-        if (!involved.equals(courtCase.involved)) return false;
-        if (!judge.equals(courtCase.judge)) return false;
-        if (!number.equals(courtCase.number)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = date.hashCode();
-        result = 31 * result + number.hashCode();
-        result = 31 * result + involved.hashCode();
-        result = 31 * result + description.hashCode();
-        result = 31 * result + judge.hashCode();
-        result = 31 * result + forma.hashCode();
-        result = 31 * result + add_address.hashCode();
-        return result;
     }
 
     @Override
