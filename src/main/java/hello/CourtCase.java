@@ -10,36 +10,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CourtCase {
 
-    @JsonProperty("date")
     private String date;
 
-    @JsonProperty("judge")
     private String judge;
 
     @JsonProperty("forma")
-    private String forma;
+    private String form;
 
-    @JsonProperty("number")
     private String number;
 
-    @JsonProperty("involved")
     private String involved;
 
-    @JsonProperty("description")
     private String description;
 
     @JsonProperty("add_address")
-    private String add_address;
-
-    public CourtCase(String date, String judge, String forma, String number, String involved, String description, String add_address) {
-        this.date = date;
-        this.judge = judge;
-        this.forma = forma;
-        this.number = number;
-        this.involved = involved;
-        this.description = description;
-        this.add_address = add_address;
-    }
+    private String address;
 
     public String getDate() {
         return date;
@@ -57,12 +42,12 @@ public class CourtCase {
         this.judge = judge;
     }
 
-    public String getForma() {
-        return forma;
+    public String getForm() {
+        return form;
     }
 
-    public void setForma(String forma) {
-        this.forma = forma;
+    public void setForm(String form) {
+        this.form = form;
     }
 
     public String getNumber() {
@@ -89,12 +74,12 @@ public class CourtCase {
         this.description = description;
     }
 
-    public String getAdd_address() {
-        return add_address;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdd_address(String add_address) {
-        this.add_address = add_address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
@@ -105,8 +90,8 @@ public class CourtCase {
                 "involved=" + involved + "\n" +
                 "description=" + description + "\n" +
                 "judge=" + judge + "\n" +
-                "forma=" + forma + "\n" +
-                "add_address=" + add_address + "\n" +
+                "form=" + form + "\n" +
+                "address=" + address + "\n" +
                 '}';
     }
 }
